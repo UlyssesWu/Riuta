@@ -157,7 +157,24 @@ namespace Riuta
             var baseDir = Path.GetDirectoryName(path) ?? "";
             var fileName = Path.GetFileNameWithoutExtension(path);
             var extractDir = Path.Combine(baseDir, $"{fileName}_extract");
-            Directory.CreateDirectory(extractDir);
+            try
+            {
+                Directory.CreateDirectory(extractDir);
+            }
+            catch (Exception)
+            {
+                extractDir = $"{fileName}_extract";
+                try
+                {
+                    Directory.CreateDirectory(extractDir);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Failed: Could not create directory.");
+                    Console.WriteLine(ex);
+                    return;
+                }
+            }
 
             int dumpCount = 0;
 
