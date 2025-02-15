@@ -1,16 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <PublishAot>true</PublishAot>
-    <InvariantGlobalization>true</InvariantGlobalization>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PublishAot>true</PublishAot>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<Title>Tauri Asset Extractor</Title>
+		<AssemblyTitle>Tauri Asset Extractor</AssemblyTitle>
+		<Company>UlyssesWu</Company>
+		<Authors>UlyssesWu</Authors>
+		<Description>Tauri Asset Extractor</Description>
+		<Copyright>wdwxy12345@gmail.com</Copyright>
+		<PackageProjectUrl>https://github.com/UlyssesWu/Riuta</PackageProjectUrl>
+		<ApplicationIcon>Rita.ico</ApplicationIcon>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AsmResolver.PE.File" Version="5.5.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Rita.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AsmResolver.PE.File" Version="5.5.1" />
+	</ItemGroup>
 
 </Project>
