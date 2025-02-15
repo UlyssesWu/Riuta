@@ -9,6 +9,8 @@ namespace Riuta
 {
     internal class Program
     {
+        public const int EntrySize = 32;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Tauri Asset Extractor");
@@ -180,7 +182,7 @@ namespace Riuta
 
             bool Dump(int offset, string basePath, in Span<byte> rdataSpan)
             {
-                if (offset < 0 || offset > rdataSpan.Length - 32)
+                if (offset < 0 || offset > rdataSpan.Length - EntrySize)
                 {
                     return false;
                 }
@@ -254,19 +256,19 @@ namespace Riuta
                 flag = Dump(currentOffset, extractDir, rdataSpan);
                 if (flag)
                 {
-                    currentOffset += 4 * 8;
+                    currentOffset += EntrySize;
                 }
             }
 
             //reverse direction
             flag = true;
-            currentOffset = refIndex - 4 * 8;
+            currentOffset = refIndex - EntrySize;
             while (flag)
             {
                 flag = Dump(currentOffset, extractDir, rdataSpan);
                 if (flag)
                 {
-                    currentOffset -= 4 * 8;
+                    currentOffset -= EntrySize;
                 }
             }
 
