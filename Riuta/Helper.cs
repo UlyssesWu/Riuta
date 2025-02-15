@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Riuta
+﻿namespace Riuta
 {
     internal static class Helper
     {
-        internal static long FindIndexOf(this Span<byte> haystack, Span<byte> needle, long startOffset = 0)
+        internal static long FindIndexOf(this in Span<byte> haystack, in ReadOnlySpan<byte> needle, long startOffset = 0)
         {
             for (long i = startOffset; i <= haystack.Length - needle.Length; i++)
             {

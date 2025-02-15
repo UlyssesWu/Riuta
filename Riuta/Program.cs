@@ -27,9 +27,18 @@ namespace Riuta
                 return;
             }
 
-            Extract(args[0]);
+            string indexFile = string.Empty;
+            if (args.Length > 1)
+            {
+                indexFile = args[1];
+            }
+
+            Extract(args[0], indexFile);
 
             Console.WriteLine("Done.");
+#if DEBUG
+            Console.ReadLine();
+#endif
         }
 
         static void Extract(string path, string indexFile = "")
@@ -190,7 +199,16 @@ namespace Riuta
 
                     //BrotliStream level 9
                     var dataStartOffset = (int) ToDataOffset(dataPtr);
-                    var decompressData = Decompress(rdataBuffer, dataStartOffset, dataLength);
+                    byte[] decompressData = [];
+                    try
+                    {
+                        decompressData = Decompress(rdataBuffer, dataStartOffset, dataLength);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Error when decompress {fileName}: {e.Message}");
+                    }
+
                     if (decompressData.Length == 0 && dataLength > 0)
                     {
                         decompressData = rdataSpan.Slice(dataStartOffset, dataLength).ToArray();
@@ -203,10 +221,6 @@ namespace Riuta
                     Console.WriteLine(
                         $"Extract {offset:X8}|{ToVirtualAddress(offset):X16}: {assetName} ({dataLength} -> {decompressData.Length})");
                     dumpCount++;
-                }
-                catch (InvalidOperationException e)
-                {
-                    Console.WriteLine($"Error when decompress {fileName}: {e.Message}");
                 }
                 catch (Exception e)
                 {

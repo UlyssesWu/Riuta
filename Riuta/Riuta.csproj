@@ -5,8 +5,6 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<PublishAot>true</PublishAot>
-		<InvariantGlobalization>true</InvariantGlobalization>
 		<Title>Tauri Asset Extractor</Title>
 		<AssemblyTitle>Tauri Asset Extractor</AssemblyTitle>
 		<Company>UlyssesWu</Company>
@@ -15,6 +13,9 @@
 		<Copyright>wdwxy12345@gmail.com</Copyright>
 		<PackageProjectUrl>https://github.com/UlyssesWu/Riuta</PackageProjectUrl>
 		<ApplicationIcon>Rita.ico</ApplicationIcon>
+		<PublishAot>true</PublishAot>
+		<PublishTrimmed>true</PublishTrimmed>
+		<InvariantGlobalization>true</InvariantGlobalization>
 	</PropertyGroup>
 
 	<ItemGroup>
