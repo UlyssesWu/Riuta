@@ -79,7 +79,7 @@ namespace Riuta
             Span<byte> addressBytes = stackalloc byte[8];
             do
             {
-                var l = rdataSpan.FindIndexOf(Encoding.UTF8.GetBytes(indexFile), index);
+                var l = rdataSpan.FindIndexOf(Encoding.UTF8.GetBytes(indexFile), ++index);
                 if (l > int.MaxValue)
                 {
                     break;
@@ -145,8 +145,6 @@ namespace Riuta
                     {
                         break;
                     }
-
-                    index += 1;
                 }
             } while (index >= 0);
 
